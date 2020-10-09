@@ -10,8 +10,8 @@ using RazorPagesMovie.Data;
 namespace RazorPagesMovie.Migrations
 {
     [DbContext(typeof(RazorPagesMovieContext))]
-    [Migration("20201008191557_DB")]
-    partial class DB
+    [Migration("20201009150248_New_DataAnnotations")]
+    partial class New_DataAnnotations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,19 +29,24 @@ namespace RazorPagesMovie.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Genre")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("Rating")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(5)")
+                        .HasMaxLength(5);
 
                     b.Property<DateTime>("RealeaseDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(60)")
+                        .HasMaxLength(60);
 
                     b.HasKey("ID");
 
